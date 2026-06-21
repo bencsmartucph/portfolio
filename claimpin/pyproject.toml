@@ -1,0 +1,27 @@
+[build-system]
+requires = ["setuptools>=64"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "claimpin"
+version = "0.1.0"
+description = "Pin every numeric claim in a manuscript to reproducible ground truth"
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+authors = [{ name = "Ben Smart", email = "besm@samf.ku.dk" }]
+dependencies = [
+    "pyyaml>=6.0",
+    "pandas>=2.0",
+    "numpy>=1.24",
+    "scipy>=1.10",
+]
+
+[project.optional-dependencies]
+dev = ["pytest"]
+
+[project.scripts]
+claimpin = "claimpin.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]

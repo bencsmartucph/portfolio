@@ -1,0 +1,18 @@
+# Restricted microdata formats — never commit
+*.dta
+*.sav
+*.por
+*.zsav
+
+# Python
+__pycache__/
+*.pyc
+*.egg-info/
+.pytest_cache/
+build/
+dist/
+
+# OS / editor cruft
+.DS_Store
+Thumbs.db
+.ipynb_checkpoints/

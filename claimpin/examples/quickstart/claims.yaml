@@ -1,0 +1,165 @@
+meta:
+  generated: '2026-06-13'
+  manuscript: paper.md
+  ops_module: ops.py
+  note: Hand-curated bindings for the quickstart toy paper. Sources resolve
+    relative to this file's directory.
+
+claims:
+- id: n_respondents
+  text_snippet: We survey N=240 graduate students
+  manuscript_lines: [8]
+  kind: n
+  value: 240
+  comparison: abs
+  tolerance: 0
+  binds_to:
+    op: count_rows
+    source: results/survey.csv
+
+- id: n_econ_cohort
+  text_snippet: across two cohorts (124 in economics)
+  manuscript_lines: [8]
+  kind: n
+  value: 124
+  comparison: abs
+  tolerance: 0
+  binds_to:
+    op: count_where
+    source: results/survey.csv
+    where: [cohort, ==, econ]
+
+- id: mean_pages
+  text_snippet: weekly thesis pages, averages 10.59 pages
+  manuscript_lines: [9]
+  kind: mean
+  value: 10.59
+  comparison: abs
+  tolerance: 0.005
+  binds_to:
+    op: col_stat
+    source: results/survey.csv
+    field: pages_per_week
+    stat: mean
+
+- id: median_coffee_distance
+  text_snippet: 'median distance to the nearest coffee machine: 148.85 metres'
+  manuscript_lines: [9, 10]
+  kind: median
+  value: 148.85
+  comparison: abs
+  tolerance: 0.005
+  binds_to:
+    op: col_stat
+    source: results/survey.csv
+    field: coffee_distance
+    stat: median
+
+- id: alpha_dread_scale
+  text_snippet: internally consistent (Cronbach's α=0.862)
+  manuscript_lines: [11]
+  kind: scale_alpha
+  value: 0.862
+  comparison: abs
+  tolerance: 0.0005
+  binds_to:
+    op: cronbach_alpha
+    source: results/survey.csv
+    cols: [dread_1, dread_2, dread_3]
+
+- id: r_coffee_pages
+  text_snippet: the raw correlation is r=-0.435
+  manuscript_lines: [15]
+  kind: correlation
+  value: -0.435
+  comparison: abs
+  tolerance: 0.0005
+  binds_to:
+    op: pearson_r
+    source: results/survey.csv
+    x: coffee_distance
+    y: pages_per_week
+
+- id: coef_coffee_distance
+  text_snippet: the coefficient on coffee distance is β=-0.0116
+  manuscript_lines: [15, 16]
+  kind: coefficient
+  value: -0.0116
+  comparison: abs
+  tolerance: 0.00005
+  binds_to:
+    op: lookup
+    source: results/toy_results.json
+    path: model1/coef_coffee_distance
+
+- id: se_coffee_distance
+  text_snippet: (SE=0.0009, N=240, R²=0.622)
+  manuscript_lines: [16, 17]
+  kind: se
+  value: 0.0009
+  comparison: abs
+  tolerance: 0.00005
+  binds_to:
+    op: lookup
+    source: results/toy_results.json
+    path: model1/se_coffee_distance
+
+- id: model_n
+  text_snippet: (SE=0.0009, N=240, R²=0.622)
+  manuscript_lines: [16, 17]
+  kind: n
+  value: 240
+  comparison: abs
+  tolerance: 0
+  binds_to:
+    op: lookup
+    source: results/toy_results.json
+    path: model1/n
+
+- id: model_r2
+  text_snippet: (SE=0.0009, N=240, R²=0.622)
+  manuscript_lines: [16, 17]
+  kind: r2
+  value: 0.622
+  comparison: abs
+  tolerance: 0.0005
+  binds_to:
+    op: lookup
+    source: results/toy_results.json
+    path: model1/r2
+
+- id: coef_focus
+  text_snippet: Self-reported focus has a coefficient of 0.866
+  manuscript_lines: [17]
+  kind: coefficient
+  value: 0.866
+  comparison: abs
+  tolerance: 0.0005
+  binds_to:
+    op: lookup
+    source: results/toy_results.json
+    path: model1/coef_focus
+
+- id: cohort_writing_gap
+  text_snippet: Economics students out-write political scientists by 0.41 pages per week
+  manuscript_lines: [17, 18]
+  kind: mean_difference
+  value: 0.41
+  comparison: abs
+  tolerance: 0.005
+  binds_to:
+    op: cohort_gap
+    source: results/survey.csv
+    outcome: pages_per_week
+    group_col: cohort
+    group_a: econ
+    group_b: polsci
+
+- id: replication_effect_smaller
+  text_snippet: an unpublished replication in which the coffee effect was 30% smaller
+  manuscript_lines: [20, 21]
+  kind: percent
+  value: 30
+  review: true
+  notes: No committed artifact for the unpublished replication — skipped loudly
+    until one exists.

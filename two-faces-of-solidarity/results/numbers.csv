@@ -1,0 +1,59 @@
+﻿name,value,se,p,n,spec
+S1_model7_step1_RTI_narrow_deserving,-0.0296571,0.00561524,1.281e-07,28860,"mixedlm RE groups=cntry_wave, wave8, anti_immig-conditioned (GROUND TRUTH)"
+S1_M5_RTI_redist_randomintercept,0.0439668,0.0062881,2.709e-12,124075,mixedlm RI all-wave (matches parent paper model 5 = 0.04397)
+S1_M5_RTI_redist_randomslopes,0.0398535,0.0147506,6.896e-03,124075,mixedlm random-slopes on task_z all-wave (paper headline 0.041)
+S2_RTI_redist_support,0.0497975,0.0108948,4.860e-06,32339,"OLS+countryFE, cluster-robust @ country (wave8)"
+S2_RTI_redist_support_wildboot_webb,0.0497975,,4.000e-04,32339,"wild-cluster bootstrap-t Webb6, H0 beta=0"
+S2_RTI_redist_support_wildboot_rademacher,0.0497975,,7.000e-04,32339,"wild-cluster bootstrap-t Rademacher2, H0 beta=0"
+S2_RTI_deserving_inclusive,-0.0182807,0.00904922,4.337e-02,32339,"OLS+countryFE, cluster-robust @ country (wave8)"
+S2_RTI_deserving_inclusive_wildboot_webb,-0.0182807,,5.780e-02,32339,"wild-cluster bootstrap-t Webb6, H0 beta=0"
+S2_RTI_deserving_inclusive_wildboot_rademacher,-0.0182807,,5.940e-02,32339,"wild-cluster bootstrap-t Rademacher2, H0 beta=0"
+S2_dissociation_holds,0,,,,redist>0&sig AND deserving_inclusive<0&sig (wild boot Webb p<.05)
+S3_RTI_uentrjb_raw,-0.0399594,0.0142594,5.074e-03,32107,"OLS+countryFE cluster-robust, RAW item (wave8)"
+S3_RTI_uentrjb_raw_wildboot_webb,-0.0399594,,1.220e-02,32107,wild bootstrap Webb6 RAW item
+S3_RTI_sbstrec_raw,-0.011827,0.0124794,3.433e-01,31624,"OLS+countryFE cluster-robust, RAW item (wave8)"
+S3_RTI_sbstrec_raw_wildboot_webb,-0.011827,,3.503e-01,31624,wild bootstrap Webb6 RAW item
+S3_RTI_sbbsntx_raw,-0.0179479,0.00957847,6.096e-02,30918,"OLS+countryFE cluster-robust, RAW item (wave8)"
+S3_RTI_sbbsntx_raw_wildboot_webb,-0.0179479,,7.600e-02,30918,wild bootstrap Webb6 RAW item
+S3_RTI_narrow_deserving_raw,-0.0255541,0.0124389,3.994e-02,32539,"OLS+countryFE cluster-robust, RAW item (wave8)"
+S3_RTI_narrow_deserving_raw_wildboot_webb,-0.0255541,,5.480e-02,32539,wild bootstrap Webb6 RAW item
+S3_RTI_sbprvpv_raw,0.00361676,0.00689144,5.997e-01,32104,"OLS+countryFE cluster-robust, RAW item (wave8)"
+S3_RTI_sbprvpv_raw_wildboot_webb,0.00361676,,6.113e-01,32104,wild bootstrap Webb6 RAW item
+S3_coherence_four_negative,1,,,,4 neg-worded items all have negative RTI coef
+S3_coherence_sbprvpv_flips_positive,1,,,,sbprvpv raw RTI coef is positive (the flip)
+S3_coherence_holds,1,,,,sbprvpv coherence check passes
+S4a_redist_support_mixedlm,0.0495784,0.0061222,5.581e-16,32415,mixedlm RE cntry_wave wave8 (robustness)
+S4a_deserving_inclusive_mixedlm,-0.0179055,0.00402633,8.704e-06,32611,mixedlm RE cntry_wave wave8 (robustness)
+S4b_redist_support_nocontrols,0.0839994,0.013327,2.921e-10,38548,controls=no controls; OLS+countryFE cluster
+S4b_redist_support_nocontrols_wildboot_webb,0.0839994,,1.000e-04,38548,controls=no controls; wild bootstrap Webb6
+S4b_redist_support_demographics,0.0904553,0.0129249,2.587e-12,38439,"controls=demographics only (age,age2,female); OLS+countryFE cluster"
+S4b_redist_support_demographics_wildboot_webb,0.0904553,,1.000e-04,38439,"controls=demographics only (age,age2,female); wild bootstrap Webb6"
+S4b_redist_support_college,0.0724187,0.0126709,1.095e-08,38315,controls=+ college; OLS+countryFE cluster
+S4b_redist_support_college_wildboot_webb,0.0724187,,2.000e-04,38315,controls=+ college; wild bootstrap Webb6
+S4b_redist_support_incomefull,0.0494449,0.0110601,7.802e-06,32415,controls=+ income (full); OLS+countryFE cluster
+S4b_redist_support_incomefull_wildboot_webb,0.0494449,,7.000e-04,32415,controls=+ income (full); wild bootstrap Webb6
+S4b_deserving_inclusive_nocontrols,-0.0453266,0.0121664,1.949e-04,38861,controls=no controls; OLS+countryFE cluster
+S4b_deserving_inclusive_nocontrols_wildboot_webb,-0.0453266,,1.100e-03,38861,controls=no controls; wild bootstrap Webb6
+S4b_deserving_inclusive_demographics,-0.0439055,0.0122835,3.511e-04,38750,"controls=demographics only (age,age2,female); OLS+countryFE cluster"
+S4b_deserving_inclusive_demographics_wildboot_webb,-0.0439055,,1.900e-03,38750,"controls=demographics only (age,age2,female); wild bootstrap Webb6"
+S4b_deserving_inclusive_college,-0.0123827,0.00871085,1.552e-01,38624,controls=+ college; OLS+countryFE cluster
+S4b_deserving_inclusive_college_wildboot_webb,-0.0123827,,1.685e-01,38624,controls=+ college; wild bootstrap Webb6
+S4b_deserving_inclusive_incomefull,-0.0178375,0.00897686,4.692e-02,32611,controls=+ income (full); OLS+countryFE cluster
+S4b_deserving_inclusive_incomefull_wildboot_webb,-0.0178375,,6.300e-02,32611,controls=+ income (full); wild bootstrap Webb6
+S4c_ologit_redist_support,0.0890532,0.0118912,6.941e-14,32415,ordered logit + country dummies (scale-compression robustness)
+S4c_ologit_uentrjb,-0.0702048,0.0116743,1.814e-09,32107,ordered logit + country dummies (scale-compression robustness)
+S4c_ologit_sbstrec,-0.0230048,0.0117156,4.958e-02,31624,ordered logit + country dummies (scale-compression robustness)
+S4c_ologit_sbbsntx,-0.0333126,0.0118539,4.950e-03,30918,ordered logit + country dummies (scale-compression robustness)
+S4c_ologit_sbprvpv,0.0114911,0.0120745,3.413e-01,32104,ordered logit + country dummies (scale-compression robustness)
+S4d_std_redist_support,0.0493876,0.0110473,7.802e-06,32415,outcome z-scored; OLS+countryFE; beta in SD units
+S4d_std_deserving_inclusive,-0.0270771,0.0136268,4.692e-02,32611,outcome z-scored; OLS+countryFE; beta in SD units
+S5_corr_redist_deserving_mean,0.0613228,,,,"mean r(redist, deserving items)"
+S5_corr_within_deserving_mean,0.172426,,,,mean r within deservingness items
+S5_cronbach_deserving_inclusive,0.463029,,,39296,"4 oriented items uentrjb,sbstrec,sbbsntx,sbprvpv_rev"
+S5_n_factors_kaiser,2,,,,eigenvalues>1 on 5-item corr matrix
+S5_eigenvalue_1,1.70804,,,,largest eigenvalue (5-item)
+S5_eigenvalue_2,1.03365,,,,2nd eigenvalue (5-item)
+SUMMARY_S1_gate1,1,,,,model7 step1 reproduced
+SUMMARY_S1_gate2,1,,,,paper RTI->redist reproduced
+SUMMARY_S2_dissociation,0,,,,dissociation holds
+SUMMARY_S3_coherence,1,,,,sbprvpv coherence holds

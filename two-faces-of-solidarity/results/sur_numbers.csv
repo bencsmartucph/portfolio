@@ -1,0 +1,26 @@
+﻿name,value,se,p,ci_lo,ci_hi,n,spec
+JOINT_redist_support_mean,3.88327,,,,,,joint-frame mean (pre-standardization)
+JOINT_redist_support_sd,1.00127,,,,,,joint-frame sd (pre-standardization)
+JOINT_deserving_inclusive_mean,3.13885,,,,,,joint-frame mean (pre-standardization)
+JOINT_deserving_inclusive_sd,0.657826,,,,,,joint-frame sd (pre-standardization)
+ARM_redist_support_z,0.0497342,0.0108809,1.497e-04,0.0271685,0.0722999,32339,"standardized arm on JOINT frame, OLS+countryFE cluster@country"
+ARM_redist_support_z_wild_webb,0.0497342,,4.000e-04,,,32339,wild-cluster bootstrap-t Webb6 H0 beta=0 (joint frame)
+ARM_deserving_inclusive_z,-0.0277895,0.0137562,5.571e-02,-0.0563182,0.000739203,32339,"standardized arm on JOINT frame, OLS+countryFE cluster@country"
+ARM_deserving_inclusive_z_wild_webb,-0.0277895,,5.780e-02,,,32339,wild-cluster bootstrap-t Webb6 H0 beta=0 (joint frame)
+cross_eq_resid_corr,0.137521,,,,,,corr of the two arms FE-OLS residuals (same respondents)
+GATE_delta_equals_arm_difference,1,,,,,,|stacked delta - (beta_deserv-beta_redist)| < 1e-9
+DELTA_full,-0.0775237,0.0181261,3.068e-04,-0.115115,-0.0399325,64678,"stacked task_z:D = beta_deserv-beta_redist, std outcomes, full controls, countryFE x eq, cluster@country"
+DELTA_full_wild_webb,-0.0775237,,8.000e-04,,,64678,wild-cluster bootstrap-t Webb6 H0 delta=0
+DELTA_full_wild_rademacher,-0.0775237,,1.200e-03,,,64678,wild-cluster bootstrap-t Rademacher2 H0 delta=0
+DELTA_full_se_naive_independent,0.0175394,,,,,,sqrt(se_redist^2+se_deserv^2) ignoring cross-eq covariance (for contrast)
+DELTA_ladder_nocontrols,-0.160789,0.0237814,8.551e-07,-0.210108,-0.111469,64678,"stacked delta, controls=no controls, std outcomes"
+DELTA_ladder_nocontrols_wild_webb,-0.160789,,1.000e-04,,,64678,"wild Webb6 H0 delta=0, controls=no controls"
+DELTA_ladder_demographics,-0.164459,0.0236619,5.610e-07,-0.213531,-0.115388,64678,"stacked delta, controls=demographics (age,age2,female), std outcomes"
+DELTA_ladder_demographics_wild_webb,-0.164459,,1.000e-04,,,64678,"wild Webb6 H0 delta=0, controls=demographics (age,age2,female)"
+DELTA_ladder_college,-0.0955024,0.0201082,9.681e-05,-0.137204,-0.0538005,64678,"stacked delta, controls=+ college, std outcomes"
+DELTA_ladder_college_wild_webb,-0.0955024,,4.000e-04,,,64678,"wild Webb6 H0 delta=0, controls=+ college"
+DELTA_ladder_incomefull,-0.0775237,0.0181261,3.068e-04,-0.115115,-0.0399325,64678,"stacked delta, controls=+ income (full controls), std outcomes"
+DELTA_ladder_incomefull_wild_webb,-0.0775237,,8.000e-04,,,64678,"wild Webb6 H0 delta=0, controls=+ income (full controls)"
+DELTA_raw_full,-0.0680781,0.0146413,1.234e-04,-0.0984423,-0.037714,64678,stacked delta on RAW outcomes (secondary; scales differ)
+VERDICT_differ,1,,,,,,delta!=0 by wild Webb p<.05 (DIFFER)
+VERDICT_oppose,0,,,,,,redist>0&sig AND deserving<0&sig by wild Webb (OPPOSE) -- the S2 strict test

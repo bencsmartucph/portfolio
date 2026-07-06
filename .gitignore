@@ -16,3 +16,6 @@ dist/
 .DS_Store
 Thumbs.db
 .ipynb_checkpoints/
+
+# v1.1 essay drafts — local staging (merged from portfolio-v1.1-prep), not for publication until Ben's authoring pass
+drafts/

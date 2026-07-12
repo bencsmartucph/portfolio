@@ -1,0 +1,1725 @@
+meta:
+  generated: '2026-06-11'
+  manuscript: ../../../Research_Master/manuscripts/paper_draft_v4_final.md
+  manuscript_sha256: 5c47fdb5a19800ef9df1f2eae5cec29196d813c1ba34382b284a285ef20bf724
+  extraction_regex: '[−-]?\d+(?:[.,]\d+)?(?:e[−-]?\d+)?'
+  keyword_regex: (β|beta|\bSE\b|p\s*[=<>]|p_TOST|N\s*=|N=|\br\s*=|R²|α|alpha|per cent|%|slope|coefficient|correlat|interaction|jackknife|ceiling|match
+    rate)
+  n_claims: 99
+  n_review: 5
+  unbound_lines:
+  - line: 53
+    text: Burgoon and Schakel (2022) provide the most careful recent empirical case for the buffering
+      account, and the apparent co
+  - line: 117
+    text: '(P3) What makes Nordic welfare states distinctive should be the *absence* of steep exclusion
+      slopes, not the *presence* '
+  - line: 163
+    text: where β₃ tests whether the conversion of automation exposure into exclusionary attitudes depends
+      on welfare institutiona
+  - line: 183
+    text: '[**Figure 3 here:** CWED generosity vs. country-level RTI→anti-immigration slopes.]'
+  - line: 185
+    text: 'At the individual level, Model 3 confirms this with the cross-level interaction (Table 1):'
+  - line: 205
+    text: '**Table 2.** Multilevel models of anti-immigration attitudes (Models 1–2; random slopes; Nordic
+      baseline).'
+  - line: 379
+    text: '[**Figure A1 here:** Coefficient stability across robustness specifications.]'
+  - line: 387
+    text: '[**Figure B1 here:** RTI→anti-immigration slopes by education and welfare regime.]'
+  note: 'claimpin case study: the seminar paper, ported 2026-06-13 from Research_Master/verification/claims/claims.yaml
+    (the golden-parity oracle). Claim content unchanged; only meta paths adjusted. Bindings curated by
+    Claude 2026-06-11 from repo inspection and quality_reports/numbers_reconciliation_2026-06-01.md. Claims
+    with review: true have no committed ground-truth artifact and are SKIPPED (not silently passed) by
+    the test suite. Unbound lines are keyword-bearing numeric lines no claim covers — most are citation
+    years or prose context; review before trusting coverage.'
+  project_root: ../../../Research_Master
+  ops_module: ops.py
+claims:
+- id: n_total_observations
+  text_snippet: 34 countries, N=188,764
+  manuscript_lines:
+  - 17
+  - 35
+  - 147
+  kind: n
+  value: 188764
+  comparison: abs
+  binds_to:
+    op: master_count_rows
+    source: analysis/sorting_mechanism_master_v2.csv
+  direction: null
+  module: recompute
+  review: false
+  tolerance: 0
+- id: n_countries
+  text_snippet: covering 34 countries
+  manuscript_lines:
+  - 17
+  - 147
+  kind: n
+  value: 34
+  comparison: abs
+  binds_to:
+    op: master_nunique
+    source: analysis/sorting_mechanism_master_v2.csv
+    col: cntry
+  direction: null
+  module: recompute
+  review: false
+  tolerance: 0
+- id: rti_match_rate_pct
+  text_snippet: 'Match rate: 87.8%'
+  manuscript_lines:
+  - 149
+  kind: percent
+  value: 87.8
+  comparison: abs
+  binds_to:
+    op: master_notnull_pct
+    source: analysis/sorting_mechanism_master_v2.csv
+    col: task
+  direction: null
+  module: recompute
+  review: false
+  tolerance: 0.05
+- id: rti_match_n
+  text_snippet: 'Match rate: 87.8% (N=165,667)'
+  manuscript_lines:
+  - 149
+  kind: n
+  value: 165667
+  comparison: abs
+  binds_to:
+    op: master_notnull_count
+    source: analysis/sorting_mechanism_master_v2.csv
+    col: task
+  direction: null
+  module: recompute
+  review: false
+  tolerance: 0
+- id: alpha_anti_immig_index
+  text_snippet: Cronbach's α=0.864
+  manuscript_lines:
+  - 151
+  - 225
+  kind: scale_alpha
+  value: 0.864
+  comparison: abs
+  binds_to:
+    op: master_cronbach
+    source: analysis/sorting_mechanism_master_v2.csv
+    cols:
+    - imwbcnt
+    - imueclt
+    - imbgeco
+  direction: null
+  module: recompute
+  review: false
+  tolerance: 0.001
+  notes: Recomputed from the three constituent items; listwise deletion.
+- id: ceiling_anti_immig_pct
+  text_snippet: 3.0% of respondents at the ceiling
+  manuscript_lines:
+  - 225
+  kind: percent
+  value: 3.0
+  comparison: abs
+  binds_to:
+    op: master_ceiling_pct
+    source: analysis/sorting_mechanism_master_v2.csv
+    col: anti_immig_index
+  direction: null
+  module: recompute
+  review: false
+  tolerance: 0.05
+- id: ceiling_redist_pct
+  text_snippet: 31.3% at the maximum
+  manuscript_lines:
+  - 225
+  kind: percent
+  value: 31.3
+  comparison: abs
+  binds_to:
+    op: master_ceiling_pct
+    source: analysis/sorting_mechanism_master_v2.csv
+    col: redist_support
+  direction: null
+  module: recompute
+  review: false
+  tolerance: 0.05
+- id: regime_slope_liberal
+  text_snippet: steepest in Liberal regimes (β=0.512)
+  manuscript_lines:
+  - 167
+  kind: coefficient
+  value: 0.512
+  comparison: abs
+  binds_to:
+    op: master_regime_bivar_slope
+    source: analysis/sorting_mechanism_master_v2.csv
+    regime: Liberal
+  direction: positive
+  module: recompute
+  review: false
+  tolerance: 0.0005
+  notes: Bivariate OLS on the pipeline complete-case analysis sample (dropna on base model vars, regime
+    'Other' excluded). Spec recovered 2026-06-11; resolves numbers_reconciliation_2026-06-01.md Finding
+    3 (previously untraceable).
+- id: regime_slope_southern
+  text_snippet: followed by Southern (β=0.462)
+  manuscript_lines:
+  - 167
+  kind: coefficient
+  value: 0.462
+  comparison: abs
+  binds_to:
+    op: master_regime_bivar_slope
+    source: analysis/sorting_mechanism_master_v2.csv
+    regime: Southern
+  direction: positive
+  module: recompute
+  review: false
+  tolerance: 0.0005
+  notes: Bivariate OLS on the pipeline complete-case analysis sample (dropna on base model vars, regime
+    'Other' excluded). Spec recovered 2026-06-11; resolves numbers_reconciliation_2026-06-01.md Finding
+    3 (previously untraceable).
+- id: regime_slope_continental
+  text_snippet: Continental (β=0.443)
+  manuscript_lines:
+  - 167
+  kind: coefficient
+  value: 0.443
+  comparison: abs
+  binds_to:
+    op: master_regime_bivar_slope
+    source: analysis/sorting_mechanism_master_v2.csv
+    regime: Continental
+  direction: positive
+  module: recompute
+  review: false
+  tolerance: 0.0005
+  notes: Bivariate OLS on the pipeline complete-case analysis sample (dropna on base model vars, regime
+    'Other' excluded). Spec recovered 2026-06-11; resolves numbers_reconciliation_2026-06-01.md Finding
+    3 (previously untraceable).
+- id: regime_slope_nordic
+  text_snippet: Nordic (β=0.413)
+  manuscript_lines:
+  - 167
+  kind: coefficient
+  value: 0.413
+  comparison: abs
+  binds_to:
+    op: master_regime_bivar_slope
+    source: analysis/sorting_mechanism_master_v2.csv
+    regime: Nordic
+  direction: positive
+  module: recompute
+  review: false
+  tolerance: 0.0005
+  notes: Bivariate OLS on the pipeline complete-case analysis sample (dropna on base model vars, regime
+    'Other' excluded). Spec recovered 2026-06-11; resolves numbers_reconciliation_2026-06-01.md Finding
+    3 (previously untraceable).
+- id: regime_slope_eastern
+  text_snippet: and Eastern (β=0.263)
+  manuscript_lines:
+  - 167
+  kind: coefficient
+  value: 0.263
+  comparison: abs
+  binds_to:
+    op: master_regime_bivar_slope
+    source: analysis/sorting_mechanism_master_v2.csv
+    regime: Eastern
+  direction: positive
+  module: recompute
+  review: false
+  tolerance: 0.0005
+  notes: Bivariate OLS on the pipeline complete-case analysis sample (dropna on base model vars, regime
+    'Other' excluded). Spec recovered 2026-06-11; resolves numbers_reconciliation_2026-06-01.md Finding
+    3 (previously untraceable).
+- id: appB_noncollege_slope
+  text_snippet: drops from 0.280 (non-college)
+  manuscript_lines:
+  - 385
+  kind: coefficient
+  value: 0.28
+  comparison: abs
+  binds_to:
+    op: master_liberal_edu_slope
+    source: analysis/sorting_mechanism_master_v2.csv
+    college: 0
+  direction: positive
+  module: recompute
+  review: false
+  tolerance: 0.0005
+  notes: Bivariate OLS on the pipeline complete-case analysis sample (dropna on base model vars, regime
+    'Other' excluded). Spec recovered 2026-06-11; resolves numbers_reconciliation_2026-06-01.md Finding
+    3 (previously untraceable).
+- id: appB_college_slope
+  text_snippet: to 0.128 (college)
+  manuscript_lines:
+  - 385
+  kind: coefficient
+  value: 0.128
+  comparison: abs
+  binds_to:
+    op: master_liberal_edu_slope
+    source: analysis/sorting_mechanism_master_v2.csv
+    college: 1
+  direction: positive
+  module: recompute
+  review: false
+  tolerance: 0.0005
+  notes: Bivariate OLS on the pipeline complete-case analysis sample (dropna on base model vars, regime
+    'Other' excluded). Spec recovered 2026-06-11; resolves numbers_reconciliation_2026-06-01.md Finding
+    3 (previously untraceable).
+- id: appB_pct_reduction
+  text_snippet: a 54 per cent reduction
+  manuscript_lines:
+  - 385
+  kind: percent
+  value: 54
+  comparison: abs
+  binds_to:
+    op: pct_reduction
+    claim_a: appB_noncollege_slope
+    claim_b: appB_college_slope
+  direction: null
+  module: recompute
+  review: false
+  tolerance: 1
+  notes: Internal consistency of the two Appendix B slopes.
+- id: almp_matched_r
+  text_snippet: uncorrelated ... (r=0.01, N=15)
+  manuscript_lines:
+  - 17
+  - 35
+  - 177
+  kind: r
+  value: 0.01
+  comparison: abs
+  binds_to:
+    source: analysis/final_results.json
+    op: lookup
+    path: almp_vs_slopes_matched/r
+  direction: null
+  module: reproduction
+  review: false
+  tolerance: 0.005
+- id: almp_matched_p
+  text_snippet: r=0.01, p=0.97, N=15
+  manuscript_lines:
+  - 177
+  kind: pvalue
+  value: 0.97
+  comparison: abs
+  binds_to:
+    source: analysis/final_results.json
+    op: lookup
+    path: almp_vs_slopes_matched/p
+  direction: null
+  module: reproduction
+  review: false
+  tolerance: 0.005
+- id: almp_matched_n
+  text_snippet: matched 15-country sample
+  manuscript_lines:
+  - 17
+  - 35
+  - 177
+  kind: n
+  value: 15
+  comparison: abs
+  binds_to:
+    source: analysis/final_results.json
+    op: lookup
+    path: almp_vs_slopes_matched/n
+  direction: null
+  module: reproduction
+  review: false
+  tolerance: 0
+- id: almp_full_n_countries
+  text_snippet: drawn from the CPDS (22 countries)
+  manuscript_lines:
+  - 153
+  kind: n
+  value: 22
+  comparison: abs
+  binds_to:
+    source: analysis/final_results.json
+    op: lookup
+    path: almp_vs_slopes/n
+  direction: null
+  module: reproduction
+  review: false
+  tolerance: 0
+- id: table1_cwed_coef
+  text_snippet: CWED generosity | -0.069
+  manuscript_lines:
+  - 192
+  kind: coefficient
+  value: -0.069
+  comparison: abs
+  binds_to:
+    source: analysis/final_results.json
+    op: lookup
+    path: model3/coef_cwed
+  direction: null
+  module: reproduction
+  review: false
+  tolerance: 0.0005
+  notes: Random-intercept source inside a random-slopes paper section; the mix is disclosed in §V.B of
+    the manuscript (2026-06-01 reconciliation, Finding 1).
+- id: table1_cwed_se
+  text_snippet: CWED generosity ... 0.064
+  manuscript_lines:
+  - 192
+  kind: se
+  value: 0.064
+  comparison: abs
+  binds_to:
+    source: analysis/final_results.json
+    op: lookup
+    path: model3/se_cwed
+  direction: null
+  module: reproduction
+  review: false
+  tolerance: 0.0005
+  notes: Random-intercept source inside a random-slopes paper section; the mix is disclosed in §V.B of
+    the manuscript (2026-06-01 reconciliation, Finding 1).
+- id: table1_cwed_p
+  text_snippet: CWED generosity ... 0.281
+  manuscript_lines:
+  - 192
+  kind: pvalue
+  value: 0.281
+  comparison: abs
+  binds_to:
+    source: analysis/final_results.json
+    op: z_p
+    coef_path: model3/coef_cwed
+    se_path: model3/se_cwed
+  direction: null
+  module: reproduction
+  review: false
+  tolerance: 0.0005
+  notes: p not stored in final_results.json; recomputed as two-sided normal p from coef/se.
+- id: model6_rti_coef
+  text_snippet: RTI predicts radical right voting in Nordic countries (β=0.220
+  manuscript_lines:
+  - 227
+  kind: coefficient
+  value: 0.22
+  comparison: abs
+  binds_to:
+    source: analysis/final_results.json
+    op: lookup
+    path: model6/params/task_z/coef
+  direction: positive
+  module: reproduction
+  review: false
+  tolerance: 0.0005
+  notes: Random-intercept source inside a random-slopes paper section; the mix is disclosed in §V.B of
+    the manuscript (2026-06-01 reconciliation, Finding 1).
+- id: model6_rti_p_lt
+  text_snippet: β=0.220, p<0.001
+  manuscript_lines:
+  - 227
+  kind: pvalue
+  value: 0.001
+  comparison: lt
+  binds_to:
+    source: analysis/final_results.json
+    op: lookup
+    path: model6/params/task_z/p
+  direction: null
+  module: reproduction
+  review: false
+- id: model6_liberal_coef
+  text_snippet: RTI × Liberal interaction is *negative* ... (β=−0.123
+  manuscript_lines:
+  - 227
+  kind: coefficient
+  value: -0.123
+  comparison: abs
+  binds_to:
+    source: analysis/final_results.json
+    op: lookup
+    path: model6/params/task_z:C(welfare_regime, Treatment(reference="Nordic"))[T.Liberal]/coef
+  direction: negative
+  module: reproduction
+  review: false
+  tolerance: 0.0005
+  notes: Random-intercept source inside a random-slopes paper section; the mix is disclosed in §V.B of
+    the manuscript (2026-06-01 reconciliation, Finding 1).
+- id: model6_liberal_p
+  text_snippet: β=−0.123, p=0.032
+  manuscript_lines:
+  - 227
+  kind: pvalue
+  value: 0.032
+  comparison: abs
+  binds_to:
+    source: analysis/final_results.json
+    op: lookup
+    path: model6/params/task_z:C(welfare_regime, Treatment(reference="Nordic"))[T.Liberal]/p
+  direction: null
+  module: reproduction
+  review: false
+  tolerance: 0.0005
+- id: appA_jack_min
+  text_snippet: ranges from 0.073 (jackknife excluding GB)
+  manuscript_lines:
+  - 375
+  kind: coefficient
+  value: 0.073
+  comparison: abs
+  binds_to:
+    source: analysis/final_results.json
+    op: lookup
+    path: robustness/Jackknife min/coef
+  direction: null
+  module: reproduction
+  review: false
+  tolerance: 0.0005
+  notes: Random-intercept source inside a random-slopes paper section; the mix is disclosed in §V.B of
+    the manuscript (2026-06-01 reconciliation, Finding 1).
+- id: appA_jack_max
+  text_snippet: to 0.161 (jackknife excluding IE)
+  manuscript_lines:
+  - 375
+  kind: coefficient
+  value: 0.161
+  comparison: abs
+  binds_to:
+    source: analysis/final_results.json
+    op: lookup
+    path: robustness/Jackknife max/coef
+  direction: null
+  module: reproduction
+  review: false
+  tolerance: 0.0005
+  notes: Random-intercept source inside a random-slopes paper section; the mix is disclosed in §V.B of
+    the manuscript (2026-06-01 reconciliation, Finding 1).
+- id: appA_jack_mean
+  text_snippet: jackknife mean of 0.117
+  manuscript_lines:
+  - 375
+  kind: coefficient
+  value: 0.117
+  comparison: abs
+  binds_to:
+    source: analysis/final_results.json
+    op: lookup
+    path: robustness/Jackknife mean/coef
+  direction: null
+  module: reproduction
+  review: false
+  tolerance: 0.0005
+  notes: Random-intercept source inside a random-slopes paper section; the mix is disclosed in §V.B of
+    the manuscript (2026-06-01 reconciliation, Finding 1).
+- id: appA_jack_sd
+  text_snippet: standard deviation of 0.013
+  manuscript_lines:
+  - 375
+  kind: se
+  value: 0.013
+  comparison: abs
+  binds_to:
+    source: analysis/final_results.json
+    op: lookup
+    path: robustness/Jackknife sd/coef
+  direction: null
+  module: reproduction
+  review: false
+  tolerance: 0.0005
+  notes: Random-intercept source inside a random-slopes paper section; the mix is disclosed in §V.B of
+    the manuscript (2026-06-01 reconciliation, Finding 1).
+- id: appA_excl_eastern
+  text_snippet: survives exclusion of Eastern European countries (β=0.128)
+  manuscript_lines:
+  - 375
+  kind: coefficient
+  value: 0.128
+  comparison: abs
+  binds_to:
+    source: analysis/final_results.json
+    op: lookup
+    path: robustness/Excl. Eastern/coef
+  direction: null
+  module: reproduction
+  review: false
+  tolerance: 0.0005
+  notes: Random-intercept source inside a random-slopes paper section; the mix is disclosed in §V.B of
+    the manuscript (2026-06-01 reconciliation, Finding 1).
+- id: appA_no_income
+  text_snippet: removal of the income control (β=0.132)
+  manuscript_lines:
+  - 375
+  kind: coefficient
+  value: 0.132
+  comparison: abs
+  binds_to:
+    source: analysis/final_results.json
+    op: lookup
+    path: robustness/No income/coef
+  direction: null
+  module: reproduction
+  review: false
+  tolerance: 0.0005
+  notes: Random-intercept source inside a random-slopes paper section; the mix is disclosed in §V.B of
+    the manuscript (2026-06-01 reconciliation, Finding 1).
+- id: appA_lr_scale
+  text_snippet: inclusion of left-right self-placement (β=0.116)
+  manuscript_lines:
+  - 375
+  kind: coefficient
+  value: 0.116
+  comparison: abs
+  binds_to:
+    source: analysis/final_results.json
+    op: lookup
+    path: robustness/With L-R scale/coef
+  direction: null
+  module: reproduction
+  review: false
+  tolerance: 0.0005
+  notes: Random-intercept source inside a random-slopes paper section; the mix is disclosed in §V.B of
+    the manuscript (2026-06-01 reconciliation, Finding 1).
+- id: marginal_nordic
+  text_snippet: compared to 0.20 in Nordic regimes
+  manuscript_lines:
+  - 167
+  kind: coefficient
+  value: 0.2
+  comparison: abs
+  binds_to:
+    source: analysis/final_results.json
+    op: lookup
+    path: model2/params/task_z/coef
+  direction: null
+  module: reproduction
+  review: false
+  tolerance: 0.005
+  notes: '''approximately''; sourced from the RI Model 2 (0.204). Random-intercept source inside a random-slopes
+    paper section; the mix is disclosed in §V.B of the manuscript (2026-06-01 reconciliation, Finding
+    1).'
+- id: marginal_liberal
+  text_snippet: approximately 0.32 additional scale points ... in Liberal regimes
+  manuscript_lines:
+  - 167
+  kind: coefficient
+  value: 0.32
+  comparison: abs
+  binds_to:
+    op: sum
+    terms:
+    - source: analysis/final_results.json
+      op: lookup
+      path: model2/params/task_z/coef
+    - source: analysis/final_results.json
+      op: lookup
+      path: model2/params/task_z:C(welfare_regime, Treatment(reference="Nordic"))[T.Liberal]/coef
+  direction: null
+  module: reproduction
+  review: false
+  tolerance: 0.005
+  notes: 0.204 + 0.117 = 0.321 (RI Model 2). Random-intercept source inside a random-slopes paper section;
+    the mix is disclosed in §V.B of the manuscript (2026-06-01 reconciliation, Finding 1).
+- id: model1_rti_coef
+  text_snippet: RTI predicts anti-immigration attitudes after controls (β=0.168
+  manuscript_lines:
+  - 203
+  kind: coefficient
+  value: 0.168
+  comparison: abs
+  binds_to:
+    source: outputs/tables/rs_results.csv
+    op: lookup
+    row:
+      model: M1_baseline_rs
+    field: rti_coef
+  direction: positive
+  module: reproduction
+  review: false
+  tolerance: 0.0005
+- id: model1_rti_p_lt
+  text_snippet: β=0.168, p<0.001
+  manuscript_lines:
+  - 203
+  kind: pvalue
+  value: 0.001
+  comparison: lt
+  binds_to:
+    source: outputs/tables/rs_results.csv
+    op: lookup
+    row:
+      model: M1_baseline_rs
+    field: rti_pval
+  direction: null
+  module: reproduction
+  review: false
+- id: model1_n
+  text_snippet: p<0.001, N=133,016
+  manuscript_lines:
+  - 203
+  kind: n
+  value: 133016
+  comparison: abs
+  binds_to:
+    source: outputs/tables/rs_results.csv
+    op: lookup
+    row:
+      model: M1_baseline_rs
+    field: n_obs
+  direction: null
+  module: reproduction
+  review: false
+  tolerance: 0
+- id: table2_rti_nordic_coef
+  text_snippet: RTI (Nordic baseline) | 0.194
+  manuscript_lines:
+  - 209
+  kind: coefficient
+  value: 0.194
+  comparison: abs
+  binds_to:
+    source: outputs/tables/rs_results.csv
+    op: lookup
+    row:
+      model: M2_regime_rs
+    field: rti_coef
+  direction: positive
+  module: reproduction
+  review: false
+  tolerance: 0.0005
+- id: table2_rti_nordic_se
+  text_snippet: RTI (Nordic baseline) ... 0.025
+  manuscript_lines:
+  - 209
+  kind: se
+  value: 0.025
+  comparison: abs
+  binds_to:
+    source: outputs/tables/rs_results.csv
+    op: lookup
+    row:
+      model: M2_regime_rs
+    field: rti_se
+  direction: null
+  module: reproduction
+  review: false
+  tolerance: 0.0005
+- id: table2_rti_nordic_p_lt
+  text_snippet: RTI (Nordic baseline) ... <0.001
+  manuscript_lines:
+  - 209
+  kind: pvalue
+  value: 0.001
+  comparison: lt
+  binds_to:
+    source: outputs/tables/rs_results.csv
+    op: lookup
+    row:
+      model: M2_regime_rs
+    field: rti_pval
+  direction: null
+  module: reproduction
+  review: false
+- id: table2_continental_coef
+  text_snippet: RTI × Continental | 0.034
+  manuscript_lines:
+  - 210
+  kind: coefficient
+  value: 0.034
+  comparison: abs
+  binds_to:
+    source: outputs/tables/rs_results.csv
+    op: lookup
+    row:
+      model: M2_regime_rs
+    field: int_task_z:welfare_regime[T.Continental]
+  direction: null
+  module: reproduction
+  review: false
+  tolerance: 0.0005
+- id: table2_continental_se
+  text_snippet: RTI × Continental ... 0.032
+  manuscript_lines:
+  - 210
+  kind: se
+  value: 0.032
+  comparison: abs
+  binds_to:
+    source: outputs/tables/rs_results.csv
+    op: lookup
+    row:
+      model: M2_regime_rs
+    field: int_task_z:welfare_regime[T.Continental]_se
+  direction: null
+  module: reproduction
+  review: false
+  tolerance: 0.0005
+- id: table2_continental_p
+  text_snippet: RTI × Continental ... 0.288
+  manuscript_lines:
+  - 210
+  kind: pvalue
+  value: 0.288
+  comparison: abs
+  binds_to:
+    source: outputs/tables/rs_results.csv
+    op: lookup
+    row:
+      model: M2_regime_rs
+    field: int_task_z:welfare_regime[T.Continental]_p
+  direction: null
+  module: reproduction
+  review: false
+  tolerance: 0.0005
+- id: table2_liberal_coef
+  text_snippet: RTI × Liberal | 0.127
+  manuscript_lines:
+  - 35
+  - 211
+  - 215
+  kind: coefficient
+  value: 0.127
+  comparison: abs
+  binds_to:
+    source: outputs/tables/rs_results.csv
+    op: lookup
+    row:
+      model: M2_regime_rs
+    field: int_task_z:welfare_regime[T.Liberal]
+  direction: positive
+  module: reproduction
+  review: false
+  tolerance: 0.0005
+- id: table2_liberal_se
+  text_snippet: RTI × Liberal ... 0.043
+  manuscript_lines:
+  - 211
+  kind: se
+  value: 0.043
+  comparison: abs
+  binds_to:
+    source: outputs/tables/rs_results.csv
+    op: lookup
+    row:
+      model: M2_regime_rs
+    field: int_task_z:welfare_regime[T.Liberal]_se
+  direction: null
+  module: reproduction
+  review: false
+  tolerance: 0.0005
+- id: table2_liberal_p
+  text_snippet: RTI × Liberal ... 0.003
+  manuscript_lines:
+  - 35
+  - 211
+  - 215
+  kind: pvalue
+  value: 0.003
+  comparison: abs
+  binds_to:
+    source: outputs/tables/rs_results.csv
+    op: lookup
+    row:
+      model: M2_regime_rs
+    field: int_task_z:welfare_regime[T.Liberal]_p
+  direction: null
+  module: reproduction
+  review: false
+  tolerance: 0.0005
+- id: table2_southern_coef
+  text_snippet: RTI × Southern | 0.029
+  manuscript_lines:
+  - 212
+  kind: coefficient
+  value: 0.029
+  comparison: abs
+  binds_to:
+    source: outputs/tables/rs_results.csv
+    op: lookup
+    row:
+      model: M2_regime_rs
+    field: int_task_z:welfare_regime[T.Southern]
+  direction: null
+  module: reproduction
+  review: false
+  tolerance: 0.0005
+- id: table2_southern_se
+  text_snippet: RTI × Southern ... 0.039
+  manuscript_lines:
+  - 212
+  kind: se
+  value: 0.039
+  comparison: abs
+  binds_to:
+    source: outputs/tables/rs_results.csv
+    op: lookup
+    row:
+      model: M2_regime_rs
+    field: int_task_z:welfare_regime[T.Southern]_se
+  direction: null
+  module: reproduction
+  review: false
+  tolerance: 0.0005
+- id: table2_southern_p
+  text_snippet: RTI × Southern ... 0.454
+  manuscript_lines:
+  - 212
+  kind: pvalue
+  value: 0.454
+  comparison: abs
+  binds_to:
+    source: outputs/tables/rs_results.csv
+    op: lookup
+    row:
+      model: M2_regime_rs
+    field: int_task_z:welfare_regime[T.Southern]_p
+  direction: null
+  module: reproduction
+  review: false
+  tolerance: 0.0005
+- id: table2_eastern_coef
+  text_snippet: RTI × Eastern | -0.132
+  manuscript_lines:
+  - 139
+  - 213
+  kind: coefficient
+  value: -0.132
+  comparison: abs
+  binds_to:
+    source: outputs/tables/rs_results.csv
+    op: lookup
+    row:
+      model: M2_regime_rs
+    field: int_task_z:welfare_regime[T.Eastern]
+  direction: negative
+  module: reproduction
+  review: false
+  tolerance: 0.0005
+- id: table2_eastern_se
+  text_snippet: RTI × Eastern ... 0.031
+  manuscript_lines:
+  - 213
+  kind: se
+  value: 0.031
+  comparison: abs
+  binds_to:
+    source: outputs/tables/rs_results.csv
+    op: lookup
+    row:
+      model: M2_regime_rs
+    field: int_task_z:welfare_regime[T.Eastern]_se
+  direction: null
+  module: reproduction
+  review: false
+  tolerance: 0.0005
+- id: table2_eastern_p_lt
+  text_snippet: RTI × Eastern ... <0.001
+  manuscript_lines:
+  - 139
+  - 213
+  kind: pvalue
+  value: 0.001
+  comparison: lt
+  binds_to:
+    source: outputs/tables/rs_results.csv
+    op: lookup
+    row:
+      model: M2_regime_rs
+    field: int_task_z:welfare_regime[T.Eastern]_p
+  direction: null
+  module: reproduction
+  review: false
+- id: table1_rti_coef
+  text_snippet: RTI | 0.215
+  manuscript_lines:
+  - 191
+  kind: coefficient
+  value: 0.215
+  comparison: abs
+  binds_to:
+    source: outputs/tables/rs_results.csv
+    op: lookup
+    row:
+      model: M3_cwed_rs
+    field: rti_coef
+  direction: positive
+  module: reproduction
+  review: false
+  tolerance: 0.0005
+- id: table1_rti_se
+  text_snippet: RTI ... 0.025 (Table 1)
+  manuscript_lines:
+  - 191
+  kind: se
+  value: 0.025
+  comparison: abs
+  binds_to:
+    source: outputs/tables/rs_results.csv
+    op: lookup
+    row:
+      model: M3_cwed_rs
+    field: rti_se
+  direction: null
+  module: reproduction
+  review: false
+  tolerance: 0.0005
+- id: table1_rti_p_lt
+  text_snippet: RTI ... <0.001 (Table 1)
+  manuscript_lines:
+  - 191
+  kind: pvalue
+  value: 0.001
+  comparison: lt
+  binds_to:
+    source: outputs/tables/rs_results.csv
+    op: lookup
+    row:
+      model: M3_cwed_rs
+    field: rti_pval
+  direction: null
+  module: reproduction
+  review: false
+- id: interaction_cwed_coef
+  text_snippet: RTI × CWED generosity | -0.059 — the headline interaction
+  manuscript_lines:
+  - 17
+  - 35
+  - 193
+  - 195
+  kind: coefficient
+  value: -0.059
+  comparison: abs
+  binds_to:
+    source: outputs/tables/rs_results.csv
+    op: lookup
+    row:
+      model: M3_cwed_rs
+    field: int_task_z:cwed_generosity_z
+  direction: negative
+  module: reproduction
+  review: false
+  tolerance: 0.0005
+- id: interaction_cwed_se
+  text_snippet: RTI × CWED generosity ... 0.024
+  manuscript_lines:
+  - 193
+  kind: se
+  value: 0.024
+  comparison: abs
+  binds_to:
+    source: outputs/tables/rs_results.csv
+    op: lookup
+    row:
+      model: M3_cwed_rs
+    field: int_task_z:cwed_generosity_z_se
+  direction: null
+  module: reproduction
+  review: false
+  tolerance: 0.0005
+- id: interaction_cwed_p
+  text_snippet: β=−0.059, p=0.015
+  manuscript_lines:
+  - 17
+  - 35
+  - 193
+  - 195
+  kind: pvalue
+  value: 0.015
+  comparison: abs
+  binds_to:
+    source: outputs/tables/rs_results.csv
+    op: lookup
+    row:
+      model: M3_cwed_rs
+    field: int_task_z:cwed_generosity_z_p
+  direction: null
+  module: reproduction
+  review: false
+  tolerance: 0.0005
+- id: interaction_cwed_n
+  text_snippet: N=81,885
+  manuscript_lines:
+  - 17
+  - 35
+  - 187
+  - 195
+  kind: n
+  value: 81885
+  comparison: abs
+  binds_to:
+    source: outputs/tables/rs_results.csv
+    op: lookup
+    row:
+      model: M3_cwed_rs
+    field: n_obs
+  direction: null
+  module: reproduction
+  review: false
+  tolerance: 0
+- id: model5_rti_coef
+  text_snippet: RTI predicts slightly more redistribution support ... (β=0.041
+  manuscript_lines:
+  - 219
+  - 395
+  kind: coefficient
+  value: 0.041
+  comparison: abs
+  binds_to:
+    source: outputs/tables/rs_results.csv
+    op: lookup
+    row:
+      model: M5_redistribution_rs
+    field: rti_coef
+  direction: positive
+  module: reproduction
+  review: false
+  tolerance: 0.0005
+- id: model5_rti_p_lt
+  text_snippet: β=0.041, p<0.001
+  manuscript_lines:
+  - 219
+  - 395
+  kind: pvalue
+  value: 0.001
+  comparison: lt
+  binds_to:
+    source: outputs/tables/rs_results.csv
+    op: lookup
+    row:
+      model: M5_redistribution_rs
+    field: rti_pval
+  direction: null
+  module: reproduction
+  review: false
+- id: model5_liberal_coef
+  text_snippet: RTI × Liberal coefficient is small and non-significant (β=0.013
+  manuscript_lines:
+  - 219
+  - 395
+  kind: coefficient
+  value: 0.013
+  comparison: abs
+  binds_to:
+    source: outputs/tables/rs_results.csv
+    op: lookup
+    row:
+      model: M5_redistribution_rs
+    field: int_task_z:welfare_regime[T.Liberal]
+  direction: null
+  module: reproduction
+  review: false
+  tolerance: 0.0005
+- id: model5_liberal_se
+  text_snippet: β=0.013, SE=0.019
+  manuscript_lines:
+  - 219
+  - 395
+  kind: se
+  value: 0.019
+  comparison: abs
+  binds_to:
+    source: outputs/tables/rs_results.csv
+    op: lookup
+    row:
+      model: M5_redistribution_rs
+    field: int_task_z:welfare_regime[T.Liberal]_se
+  direction: null
+  module: reproduction
+  review: false
+  tolerance: 0.0005
+- id: model5_liberal_p
+  text_snippet: SE=0.019, p=0.488
+  manuscript_lines:
+  - 219
+  - 395
+  kind: pvalue
+  value: 0.488
+  comparison: abs
+  binds_to:
+    source: outputs/tables/rs_results.csv
+    op: lookup
+    row:
+      model: M5_redistribution_rs
+    field: int_task_z:welfare_regime[T.Liberal]_p
+  direction: null
+  module: reproduction
+  review: false
+  tolerance: 0.0005
+- id: model4_triple_coef
+  text_snippet: RTI × Liberal × non-college term (β=0.037
+  manuscript_lines:
+  - 389
+  kind: coefficient
+  value: 0.037
+  comparison: abs
+  binds_to:
+    source: outputs/tables/rs_results.csv
+    op: lookup
+    row:
+      model: M4_education_rs
+    field: int_task_z:welfare_regime[T.Liberal]:non_college
+  direction: null
+  module: reproduction
+  review: false
+  tolerance: 0.0005
+- id: model4_triple_p
+  text_snippet: β=0.037, p=0.542
+  manuscript_lines:
+  - 389
+  kind: pvalue
+  value: 0.542
+  comparison: abs
+  binds_to:
+    source: outputs/tables/rs_results.csv
+    op: lookup
+    row:
+      model: M4_education_rs
+    field: int_task_z:welfare_regime[T.Liberal]:non_college_p
+  direction: null
+  module: reproduction
+  review: false
+  tolerance: 0.0005
+- id: macro_cwed_coef
+  text_snippet: robust to country-level GDP growth and Gini controls (β=−0.066
+  manuscript_lines:
+  - 195
+  - 377
+  kind: coefficient
+  value: -0.066
+  comparison: abs
+  binds_to:
+    source: outputs/tables/rs_macro_controls.csv
+    op: lookup
+    row:
+      model: M3_cwed_macro_controls
+    field: cwed_int_coef
+  direction: negative
+  module: reproduction
+  review: false
+  tolerance: 0.0005
+- id: macro_cwed_p_lt
+  text_snippet: β=−0.066, p<0.001
+  manuscript_lines:
+  - 195
+  - 377
+  kind: pvalue
+  value: 0.001
+  comparison: lt
+  binds_to:
+    source: outputs/tables/rs_macro_controls.csv
+    op: lookup
+    row:
+      model: M3_cwed_macro_controls
+    field: cwed_int_p
+  direction: null
+  module: reproduction
+  review: false
+- id: cwed_headline_r
+  text_snippet: 'correlation is strongly negative: r=−0.855'
+  manuscript_lines:
+  - 17
+  - 35
+  - 179
+  - 231
+  kind: r
+  value: -0.855
+  comparison: abs
+  binds_to:
+    op: pearson_r
+    source: outputs/tables/blups_country_slopes.csv
+    x: cwed
+    y: blup_slope
+  direction: negative
+  module: reproduction
+  review: false
+  tolerance: 0.0005
+- id: cwed_headline_p_lt
+  text_snippet: r=−0.855, p<0.001
+  manuscript_lines:
+  - 17
+  - 35
+  - 179
+  - 231
+  kind: pvalue
+  value: 0.001
+  comparison: lt
+  binds_to:
+    op: pearson_p
+    source: outputs/tables/blups_country_slopes.csv
+    x: cwed
+    y: blup_slope
+  direction: null
+  module: reproduction
+  review: false
+- id: cwed_headline_n
+  text_snippet: N=15 countries
+  manuscript_lines:
+  - 17
+  - 35
+  - 179
+  kind: n
+  value: 15
+  comparison: abs
+  binds_to:
+    op: count_rows
+    source: outputs/tables/blups_country_slopes.csv
+  direction: null
+  module: reproduction
+  review: false
+  tolerance: 0
+- id: cwed_r2_pct
+  text_snippet: 73 per cent of the cross-country variation
+  manuscript_lines:
+  - 179
+  kind: r2
+  value: 73
+  comparison: abs
+  binds_to:
+    op: pearson_r2_pct
+    source: outputs/tables/blups_country_slopes.csv
+    x: cwed
+    y: blup_slope
+  direction: null
+  module: reproduction
+  review: false
+  tolerance: 0.5
+- id: percountry_ols_r
+  text_snippet: directionally identical but weaker correlation with CWED (r=−0.625
+  manuscript_lines:
+  - 181
+  kind: r
+  value: -0.625
+  comparison: abs
+  binds_to:
+    op: pearson_r
+    source: outputs/tables/per_country_slopes.csv
+    x: cwed
+    y: slope
+  direction: negative
+  module: reproduction
+  review: false
+  tolerance: 0.0005
+- id: percountry_ols_p
+  text_snippet: r=−0.625, p=0.013
+  manuscript_lines:
+  - 181
+  kind: pvalue
+  value: 0.013
+  comparison: abs
+  binds_to:
+    op: pearson_p
+    source: outputs/tables/per_country_slopes.csv
+    x: cwed
+    y: slope
+  direction: null
+  module: reproduction
+  review: false
+  tolerance: 0.0005
+- id: denmark_blup
+  text_snippet: Denmark shows a relatively steep RTI→exclusion slope (β=0.24
+  manuscript_lines:
+  - 199
+  kind: coefficient
+  value: 0.24
+  comparison: abs
+  binds_to:
+    op: lookup
+    source: outputs/tables/blups_country_slopes.csv
+    row:
+      cntry: DK
+    field: blup_slope
+  direction: positive
+  module: reproduction
+  review: false
+  tolerance: 0.005
+- id: jack_excl_gb_r
+  text_snippet: excluding the United Kingdom (lowest CWED) gives r=−0.808
+  manuscript_lines:
+  - 199
+  kind: r
+  value: -0.808
+  comparison: abs
+  binds_to:
+    op: lookup
+    source: outputs/tables/blups_jackknife_single.csv
+    row:
+      excluded: GB
+    field: r
+  direction: null
+  module: reproduction
+  review: false
+  tolerance: 0.0005
+- id: jack_excl_no_r
+  text_snippet: excluding Norway (highest CWED) gives r=−0.793
+  manuscript_lines:
+  - 199
+  kind: r
+  value: -0.793
+  comparison: abs
+  binds_to:
+    op: lookup
+    source: outputs/tables/blups_jackknife_single.csv
+    row:
+      excluded: 'NO'
+    field: r
+  direction: null
+  module: reproduction
+  review: false
+  tolerance: 0.0005
+- id: jack_gbno_r
+  text_snippet: excluding both simultaneously gives r=−0.700
+  manuscript_lines:
+  - 199
+  kind: r
+  value: -0.7
+  comparison: abs
+  binds_to:
+    op: lookup
+    source: outputs/tables/blups_jackknife_two.csv
+    row:
+      excl_a: GB
+      excl_b: 'NO'
+    field: r
+  direction: null
+  module: reproduction
+  review: false
+  tolerance: 0.0005
+- id: jack_gbno_p
+  text_snippet: r=−0.700 (p=0.008)
+  manuscript_lines:
+  - 199
+  kind: pvalue
+  value: 0.008
+  comparison: abs
+  binds_to:
+    op: lookup
+    source: outputs/tables/blups_jackknife_two.csv
+    row:
+      excl_a: GB
+      excl_b: 'NO'
+    field: p
+  direction: null
+  module: reproduction
+  review: false
+  tolerance: 0.0005
+- id: jack_pairs_n
+  text_snippet: the full set of 105 two-country BLUPs jackknife pairs
+  manuscript_lines:
+  - 199
+  kind: n
+  value: 105
+  comparison: abs
+  binds_to:
+    op: count_rows
+    source: outputs/tables/blups_jackknife_two.csv
+  direction: null
+  module: reproduction
+  review: false
+  tolerance: 0
+- id: jack_pair_r_min
+  text_snippet: the correlation ranges from r=−0.700 to r=−0.922 (strong end)
+  manuscript_lines:
+  - 199
+  kind: r
+  value: -0.922
+  comparison: abs
+  binds_to:
+    op: col_stat
+    source: outputs/tables/blups_jackknife_two.csv
+    field: r
+    stat: min
+  direction: null
+  module: reproduction
+  review: false
+  tolerance: 0.0005
+- id: jack_pair_r_max
+  text_snippet: the correlation ranges from r=−0.700 (weak end)
+  manuscript_lines:
+  - 199
+  kind: r
+  value: -0.7
+  comparison: abs
+  binds_to:
+    op: col_stat
+    source: outputs/tables/blups_jackknife_two.csv
+    field: r
+    stat: max
+  direction: null
+  module: reproduction
+  review: false
+  tolerance: 0.0005
+- id: jack_sign_flips
+  text_snippet: no pair flips sign
+  manuscript_lines:
+  - 199
+  kind: n
+  value: 0
+  comparison: abs
+  binds_to:
+    op: count_where
+    source: outputs/tables/blups_jackknife_two.csv
+    where:
+    - r
+    - '>='
+    - 0
+  direction: null
+  module: reproduction
+  review: false
+  tolerance: 0
+- id: jack_sig_pairs
+  text_snippet: 105 of 105 retain significance at p<0.05
+  manuscript_lines:
+  - 199
+  kind: n
+  value: 105
+  comparison: abs
+  binds_to:
+    op: count_where
+    source: outputs/tables/blups_jackknife_two.csv
+    where:
+    - p
+    - <
+    - 0.05
+  direction: null
+  module: reproduction
+  review: false
+  tolerance: 0
+- id: regional_meta_r
+  text_snippet: regional RTI→radical-right vote share with CWED is r=+0.15
+  manuscript_lines:
+  - 231
+  kind: r
+  value: 0.15
+  comparison: abs
+  binds_to:
+    op: pearson_r
+    source: outputs/tables/regional_sanity_check.csv
+    x: cwed
+    y: beta_rti_region
+  direction: null
+  module: reproduction
+  review: false
+  tolerance: 0.005
+- id: regional_meta_p
+  text_snippet: r=+0.15 (p=0.66)
+  manuscript_lines:
+  - 231
+  kind: pvalue
+  value: 0.66
+  comparison: abs
+  binds_to:
+    op: pearson_p
+    source: outputs/tables/regional_sanity_check.csv
+    x: cwed
+    y: beta_rti_region
+  direction: null
+  module: reproduction
+  review: false
+  tolerance: 0.005
+- id: regional_neg_slopes
+  text_snippet: 8 of 12 within-country regional slopes are negative
+  manuscript_lines:
+  - 231
+  kind: n
+  value: 8
+  comparison: abs
+  binds_to:
+    op: count_where
+    source: outputs/tables/regional_sanity_check.csv
+    where:
+    - r_pearson
+    - <
+    - 0
+  direction: null
+  module: reproduction
+  review: false
+  tolerance: 0
+- id: regional_n_countries
+  text_snippet: 8 of 12 within-country regional slopes
+  manuscript_lines:
+  - 231
+  kind: n
+  value: 12
+  comparison: abs
+  binds_to:
+    op: count_rows
+    source: outputs/tables/regional_sanity_check.csv
+  direction: null
+  module: reproduction
+  review: false
+  tolerance: 0
+- id: tost_ess_p_at_005
+  text_snippet: p = 0.028 at 0.05
+  manuscript_lines:
+  - 223
+  kind: pvalue
+  value: 0.028
+  comparison: abs
+  binds_to:
+    source: outputs/tables/journal_version/tost_summary.json
+    op: lookup
+    path: ess_model5_liberal/tost_results_by_sesoi/0.05/p_tost
+  direction: null
+  module: reproduction
+  review: false
+  tolerance: 0.0005
+- id: tost_ess_p_at_010_lt
+  text_snippet: p_TOST < 0.001 at a 0.10 standardised-effect threshold
+  manuscript_lines:
+  - 223
+  kind: pvalue
+  value: 0.001
+  comparison: lt
+  binds_to:
+    source: outputs/tables/journal_version/tost_summary.json
+    op: tost_p
+    beta_path: ess_model5_liberal/beta
+    se_path: ess_model5_liberal/se
+    n_path: ess_model5_liberal/n
+    sesoi: 0.1
+  direction: null
+  module: reproduction
+  review: false
+  notes: The committed tost_summary.json carries SESOI 0.06/0.05/0.03 only — no 0.10 row. Verified here
+    by recomputing the TOST analytically from the committed beta/se/n. Prose and artifact SESOI grids
+    should be aligned at journal time.
+- id: issp_beta
+  text_snippet: no interaction ... on unemployment spending support (β=+0.010
+  manuscript_lines:
+  - 221
+  - 397
+  kind: coefficient
+  value: 0.01
+  comparison: abs
+  binds_to:
+    source: outputs/tables/journal_version/tost_summary.json
+    op: lookup
+    path: issp_2006_rti_cwed/beta
+  direction: null
+  module: reproduction
+  review: false
+  tolerance: 0.0005
+- id: issp_se
+  text_snippet: β=+0.010, SE=0.016
+  manuscript_lines:
+  - 221
+  - 397
+  kind: se
+  value: 0.016
+  comparison: abs
+  binds_to:
+    source: outputs/tables/journal_version/tost_summary.json
+    op: lookup
+    path: issp_2006_rti_cwed/se
+  direction: null
+  module: reproduction
+  review: false
+  tolerance: 0.0005
+- id: issp_n
+  text_snippet: ISSP 2006 Role of Government module (N=10,216
+  manuscript_lines:
+  - 221
+  - 395
+  kind: n
+  value: 10216
+  comparison: abs
+  binds_to:
+    source: outputs/tables/journal_version/tost_summary.json
+    op: lookup
+    path: issp_2006_rti_cwed/n
+  direction: null
+  module: reproduction
+  review: false
+  tolerance: 0
+- id: issp_p
+  text_snippet: SE=0.016, p=0.55
+  manuscript_lines:
+  - 221
+  - 397
+  kind: pvalue
+  value: 0.55
+  comparison: abs
+  binds_to:
+    source: outputs/tables/journal_version/issp_solidarity_results.json
+    op: lookup
+    path: mixed_model/interaction/p
+  direction: null
+  module: reproduction
+  review: false
+  tolerance: 0.005
+  notes: Bound 2026-06-11 to issp_solidarity_results.json (full-precision rerun of scripts/issp_solidarity_leg.py
+    via verification/make_issp_artifact.py). Fresh p=0.5512 — the earlier ≈0.53 normal-approx came from
+    the rounded beta/se in tost_summary.json, not from a manuscript error.
+- id: issp_main_rti
+  text_snippet: 'Main RTI effect: β=−0.109'
+  manuscript_lines:
+  - 397
+  kind: coefficient
+  value: -0.109
+  comparison: abs
+  binds_to:
+    source: outputs/tables/journal_version/issp_solidarity_results.json
+    op: lookup
+    path: mixed_model/task_z/beta
+  direction: null
+  module: reproduction
+  review: false
+  tolerance: 0.0005
+  notes: Bound 2026-06-11 to issp_solidarity_results.json (verification/make_issp_artifact.py).
+- id: issp_ols_beta
+  text_snippet: 'OLS cross-check: β=−0.012'
+  manuscript_lines:
+  - 397
+  kind: coefficient
+  value: -0.012
+  comparison: abs
+  binds_to:
+    source: outputs/tables/journal_version/issp_solidarity_results.json
+    op: lookup
+    path: ols/interaction/beta
+  direction: null
+  module: reproduction
+  review: false
+  tolerance: 0.0005
+  notes: Bound 2026-06-11 to issp_solidarity_results.json (verification/make_issp_artifact.py).
+- id: issp_ols_p
+  text_snippet: β=−0.012, p=0.77
+  manuscript_lines:
+  - 397
+  kind: pvalue
+  value: 0.77
+  comparison: abs
+  binds_to:
+    source: outputs/tables/journal_version/issp_solidarity_results.json
+    op: lookup
+    path: ols/interaction/p
+  direction: null
+  module: reproduction
+  review: false
+  tolerance: 0.005
+  notes: Bound 2026-06-11 to issp_solidarity_results.json (verification/make_issp_artifact.py).
+- id: issp_n_countries
+  text_snippet: N=10,216, 12 countries
+  manuscript_lines:
+  - 221
+  - 395
+  kind: n
+  value: 12
+  comparison: abs
+  binds_to:
+    source: outputs/tables/journal_version/issp_solidarity_results.json
+    op: lookup
+    path: sample/n_countries
+  direction: null
+  module: reproduction
+  review: false
+  tolerance: 0
+  notes: Bound 2026-06-11 to issp_solidarity_results.json (verification/make_issp_artifact.py).

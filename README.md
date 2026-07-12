@@ -24,6 +24,8 @@ The numbers a paper asserts drift. A model is re-run, a table regenerated, and a
 
 → **[Browse claimpin](claimpin/)** — source, tests, and a runnable synthetic quickstart.
 
+claimpin verifies all 99 numeric claims in the seminar paper above — see the parity report in case_studies/seminar_paper/.
+
 ## 3. Two faces of solidarity — a methods-and-integrity case study
 
 Does automation exposure move the two faces of redistributive preference — *how much* (support for redistribution) and *for whom* (who is judged deserving) — together, or do they dissociate? A small confirmatory study built around a frozen analysis plan and a falsification audit answered against the data. The honest result is a *directional* dissociation: exposure reliably raises the amount of redistribution demanded, while its push on deservingness is weak and largely an education gradient. Two of the five pre-committed kill-conditions fired, and the writeup reports them as such — the conceded null is the point. Extends *Dignity Is a Baseline*.
@@ -35,6 +37,8 @@ Does automation exposure move the two faces of redistributive preference — *ho
 ## A note on data
 
 The empirical work draws on the European Social Survey and related survey sources, which are governed by use agreements that restrict redistribution. No raw microdata is included here — only finished writing, derived figures, and code.
+
+Built with Claude as a pair-programmer; the research design, analysis, and domain judgment are mine.
 
 ## License
 

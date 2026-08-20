@@ -19,3 +19,5 @@ Thumbs.db
 
 # v1.1 essay drafts — local staging (merged from portfolio-v1.1-prep), not for publication until Ben's authoring pass
 drafts/
+
+.claude/hookify.*.local.md

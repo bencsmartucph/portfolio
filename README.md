@@ -32,6 +32,12 @@ Does automation exposure move the two faces of redistributive preference — *ho
 
 → **[Read the study](two-faces-of-solidarity/)** — frozen plan, falsification audit, and reproducible code (data restricted, not included).
 
+## 4. chess-coach — personal chess coaching pipeline
+
+A data pipeline that turns my chess.com games into interactive, engine-verified coaching reviews. Each game gets a narrative explanation of what went wrong, move-by-move Stockfish analysis, drag-and-try board exploration, and a validation pass that machine-checks every coaching claim against the engine lines. Python 3.14 · SQLite · Stockfish 17 · Claude · vanilla JS/CSS (no framework, no build step — each review is one self-contained HTML file).
+
+→ **[See a sample review](chess-coach/)** — an interactive game review with coach bubbles, eval graph, and move-quality badges.
+
 ---
 
 ## A note on data
@@ -42,4 +48,4 @@ Built with Claude as a pair-programmer; the research design, analysis, and domai
 
 ## License
 
-Code (`claimpin/`) is MIT-licensed. The seminar paper, its figures, and the written text in this repository are © 2026 Ben Smart, shared for review as part of a graduate-application portfolio and not licensed for reuse. See [LICENSE](LICENSE).
+Code (`claimpin/`, `chess-coach/`) is MIT-licensed. The seminar paper, its figures, and the written text in this repository are © 2026 Ben Smart, shared for review as part of a graduate-application portfolio and not licensed for reuse. See [LICENSE](LICENSE).

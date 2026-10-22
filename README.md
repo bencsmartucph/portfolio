@@ -38,6 +38,10 @@ A data pipeline that turns my chess.com games into interactive, engine-verified 
 
 → **[See a sample review](chess-coach/)** — an interactive game review with coach bubbles, eval graph, and move-quality badges.
 
+## 5. A dictation filter that rewrites instead of answering
+
+→ **[Read the note](dictation-filter/)** - how a voice-dictation rewrite prompt stops a model answering the question it was meant to rewrite, and what each Claude model needed for that to hold.
+
 ---
 
 ## A note on data

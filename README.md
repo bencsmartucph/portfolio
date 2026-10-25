@@ -1,6 +1,6 @@
 # Ben Smart — research portfolio
 
-MSc Economics, University of Copenhagen (2026). I study how welfare institutions shape the political response to economic disruption — and what dignity-preserving welfare design can do about it.
+MSc Economics, University of Copenhagen (finishing early 2027). I study how welfare institutions shape the political response to economic disruption — and what dignity-preserving welfare design can do about it.
 
 This repository is a curated subset of my work: the pieces I would want read first. It is deliberately small. Each item is finished and stands on its own.
 

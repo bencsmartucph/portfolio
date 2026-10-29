@@ -21,3 +21,6 @@ Thumbs.db
 drafts/
 
 .claude/hookify.*.local.md
+
+# Own repo (public snapshot of claude-automations/cmdpal-ask)
+ask-and-do/

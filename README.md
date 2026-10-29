@@ -42,6 +42,10 @@ A data pipeline that turns my chess.com games into interactive, engine-verified 
 
 → **[Read the note](dictation-filter/)** - how a voice-dictation rewrite prompt stops a model answering the question it was meant to rewrite, and what each Claude model needed for that to hold.
 
+## 6. Trust labels - shared AI tools you can check
+
+→ **[See the repo](https://github.com/bencsmartucph/trust-label)** - a label that re-runs a shared tool on past work and says, in one sentence, when its answers stop matching the old way. Built at the Claude Impact Lab, Copenhagen, 21 Oct 2026.
+
 ---
 
 ## A note on data
